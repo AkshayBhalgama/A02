@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Palace Hotel Blog | Web & Digital Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reuse existing CSS variables and base styles from your main page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0d3b66;
+            --secondary-color: #f4a261;
+            --accent-color: #e9f5f9;
+            --success-color: #2a9d8f;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 10px;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav ul li a.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* Blog Hero */
+        .blog-hero {
+            background: linear-gradient(rgba(13, 59, 102, 0.9), rgba(13, 59, 102, 0.8)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 60px;
+            border-radius: var(--border-radius);
+        }
+
+        .blog-hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .blog-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Blog Layout */
+        .blog-container {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Main Blog Content */
+        .blog-main {
+            flex: 3;
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Featured Post */
+        .featured-post {
+            background: linear-gradient(135deg, var(--primary-color), #1a5276);
+            color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .featured-content {
+            padding: 40px;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .featured-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .featured-meta i {
+            margin-right: 5px;
+        }
+
+        .featured-meta span {
+            margin-right: 20px;
+        }
+
+        /* Blog Posts Grid */
+        .blog-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .blog-post-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .post-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .post-content {
+            padding: 25px;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .post-meta i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+
+        .post-meta span {
+            margin-right: 15px;
+        }
+
+        .post-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            line-height: 1.4;
+        }
+
+        .post-content p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .pagination a, .pagination span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .pagination a {
+            color: var(--primary-color);
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+
+        .pagination a:hover, .pagination .active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .pagination .prev, .pagination .next {
+            width: auto;
+            padding: 0 20px;
+        }
+
+        /* Sidebar Widgets */
+        .sidebar-widget {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+        }
+
+        .widget-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            font-size: 1.3rem;
+        }
+
+        /* Search Widget */
+        .search-form {
+            display: flex;
+        }
+
+        .search-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-form button:hover {
+            background-color: #0a2d4d;
+        }
+
+        /* Categories Widget */
+        .categories-list {
+            list-style: none;
+        }
+
+        .categories-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .categories-list a {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            transition: color 0.3s;
+        }
+
+        .categories-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .categories-list span {
+            background-color: var(--accent-color);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Recent Posts Widget */
+        .recent-post {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .recent-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .recent-post img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .recent-post h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .recent-post .date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Newsletter Widget */
+        .newsletter-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Tags Widget */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Code Block Styling */
+        .code-block {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .code-keyword {
+            color: #c678dd;
+        }
+
+        .code-function {
+            color: #61afef;
+        }
+
+        .code-string {
+            color: #98c379;
+        }
+
+        .code-comment {
+            color: #5c6370;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #e68a3d;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #0a2d4d;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 40px;
+        }
+
+        .mb-4 {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .blog-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .blog-container {
+                flex-direction: column;
+            }
+            
+            .blog-sidebar {
+                min-width: 100%;
+            }
+            
+            .featured-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 15px 0;
+            }
+
+            .blog-hero h2 {
+                font-size: 2rem;
+            }
+
+            .blog-hero p {
+                font-size: 1.1rem;
+            }
+
+            .blog-posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-meta {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-hero {
+                padding: 60px 0;
+            }
+            
+            .featured-content {
+                padding: 25px;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="Full_Web_Updated.html" class="logo">
+                <i class="fas fa-hotel"></i>
+                <h1>Luxury Palace</h1>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="Full_Web_Updated.html">Home</a></li>
+                    <li><a href="Full_Web_Updated.html#rooms">Rooms</a></li>
+                    <li><a href="blog.html" class="active">Web Blog</a></li>
+                    <li><a href="Full_Web_Updated.html#videoSection">Video Tour</a></li>
+                    <li><a href="#">Amenities</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h2>Web Development & Digital Insights</h2>
+            <p>Professional articles about web development, digital marketing, and hotel website optimization strategies</p>
+            <a href="#featured" class="btn btn-primary">Explore Articles</a>
+        </div>
+    </section>
+
+    <!-- Main Blog Content -->
+    <div class="container blog-container">
+        <!-- Main Blog Posts -->
+        <main class="blog-main">
+            <!-- Featured Post -->
+            <article class="featured-post" id="featured">
+                <div class="featured-content">
+                    <span class="featured-badge">FEATURED</span>
+                    <h2>Building a Luxury Hotel Website: Best Practices for 2024</h2>
+                    <div class="featured-meta">
+                        <span><i class="far fa-calendar"></i> November 15, 2023</span>
+                        <span><i class="far fa-user"></i> By Web Developer</span>
+                        <span><i class="far fa-clock"></i> 8 min read</span>
+                        <span><i class="fas fa-tags"></i> Web Development, Hotel Tech</span>
+                    </div>
+                    <p>Discover the essential elements of creating a high-converting luxury hotel website. From responsive design to booking system integration, learn how to create a seamless user experience that drives direct bookings and enhances guest satisfaction.</p>
+                    <a href="#" class="btn" style="background-color: white; color: var(--primary-color); margin-top: 20px;">Read Full Article</a>
+                </div>
+            </article>
+
+            <!-- Blog Posts Grid -->
+            <div class="blog-posts-grid">
+                <!-- Post 1: Web Development -->
+                <article class="blog-post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+                        <span class="post-category">Web Development</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> November 10, 2023</span>
+                            <span><i class="far fa-user"></i> By Frontend Developer</span>
+                        </div>
+                        <h3>Responsive Design for Hotel Websites: Mobile-First Approach</h3>
+                        <p>Learn why mobile-first design is crucial for hotel websites and how to implement responsive layouts that work seamlessly across all devices.</p>
+                        <div class="code-block">
+                            <span class="code-keyword">@media</span> (<span class="code-keyword">max-width</span>: <span class="code-string">768px</span>) {<br>
+                            &nbsp;&nbsp;<span class="code-keyword">.hero-section</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">padding</span>: <span class="code-string">60px 20px</span>;<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 2: Digital Marketing -->
+                <article class="blog-post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+                        <span class="post-category">Digital Marketing</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> November 5, 2023</span>
+                            <span><i class="far fa-user"></i> By Marketing Expert</span>
+                        </div>
+                        <h3>SEO Strategies for Hotel Websites: Rank Higher in 2024</h3>
+                        <p>Comprehensive guide to SEO optimization for hotel websites, including local SEO, content strategy, and technical optimization techniques.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 3: Booking Systems -->
+                <article class="blog-post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+                        <span class="post-category">Booking Systems</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> October 28, 2023</span>
+                            <span><i class="far fa-user"></i> By Tech Specialist</span>
+                        </div>
+                        <h3>Implementing Secure Online Booking Systems</h3>
+                        <p>Technical deep dive into building secure, user-friendly booking systems with real-time availability and payment integration.</p>
+                        <div class="code-block">
+                            <span class="code-comment">// Booking form validation</span><br>
+                            <span class="code-keyword">function</span> <span class="code-function">validateBookingForm</span>() {<br>
+                            &nbsp;&nbsp;<span class="code-keyword">const</span> checkIn = <span class="code-function">getElementById</span>(<span class="code-string">'checkinDate'</span>).value;<br>
+                            &nbsp;&nbsp;<span class="code-keyword">const</span> checkOut = <span class="code-function">getElementById</span>(<span class="code-string">'checkoutDate'</span>).value;<br>
+                            &nbsp;&nbsp;<span class="code-keyword">return</span> checkIn &lt; checkOut;<br>
+                            }
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 4: Performance Optimization -->
+                <article class="blog-post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+                        <span class="post-category">Performance</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> October 20, 2023</span>
+                            <span><i class="far fa-user"></i> By Performance Engineer</span>
+                        </div>
+                        <h3>Website Performance Optimization for Better Conversions</h3>
+                        <p>How faster loading times can significantly improve booking conversions and user experience on hotel websites.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 5: User Experience -->
+                <article class="blog-post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+                        <span class="post-category">UX/UI Design</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> October 15, 2023</span>
+                            <span><i class="far fa-user"></i> By UX Designer</span>
+                        </div>
+                        <h3>Creating Intuitive User Journeys for Hotel Websites</h3>
+                        <p>UX design principles specifically tailored for hotel websites to guide users from discovery to booking completion.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 6: Security -->
+                <article class="blog-post-card">
+                    <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+                        <span class="post-category">Web Security</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> October 10, 2023</span>
+                            <span><i class="far fa-user"></i> By Security Expert</span>
+                        </div>
+                        <h3>Securing Hotel Websites: GDPR and Data Protection</h3>
+                        <p>Essential security measures and compliance requirements for hotel websites handling guest data and payments.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="prev"><i class="fas fa-chevron-left"></i> Previous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <span>...</span>
+                <a href="#">8</a>
+                <a href="#" class="next">Next <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+            <!-- Search Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Search Articles</h3>
+                <form class="search-form">
+                    <input type="text" placeholder="Search web development topics...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Web Development Categories</h3>
+                <ul class="categories-list">
+                    <li><a href="#">Frontend Development <span>15</span></a></li>
+                    <li><a href="#">Backend Systems <span>8</span></a></li>
+                    <li><a href="#">Digital Marketing <span>12</span></a></li>
+                    <li><a href="#">UX/UI Design <span>10</span></a></li>
+                    <li><a href="#">SEO Optimization <span>7</span></a></li>
+                    <li><a href="#">Web Security <span>5</span></a></li>
+                    <li><a href="#">Hotel Tech <span>9</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Recent Posts Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Recent Web Articles</h3>
+                <div class="recent-post">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Web Development">
+                    <div>
+                        <h4>Responsive Design for Hotel Websites</h4>
+                        <p class="date">Nov 10, 2023</p>
+                    </div>
+                </div>
+                <div class="recent-post">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Digital Marketing">
+                    <div>
+                        <h4>SEO Strategies for Hotel Websites</h4>
+                        <p class="date">Nov 5, 2023</p>
+                    </div>
+                </div>
+                <div class="recent-post">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Booking Systems">
+                    <div>
+                        <h4>Secure Online Booking Systems</h4>
+                        <p class="date">Oct 28, 2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Web Development Newsletter</h3>
+                <p>Subscribe for the latest web development trends, tutorials, and hotel tech insights.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Popular Tech Tags</h3>
+                <div class="tags-container">
+                    <a href="#" class="tag">JavaScript</a>
+                    <a href="#" class="tag">CSS</a>
+                    <a href="#" class="tag">HTML5</a>
+                    <a href="#" class="tag">Responsive</a>
+                    <a href="#" class="tag">SEO</a>
+                    <a href="#" class="tag">UX Design</a>
+                    <a href="#" class="tag">Security</a>
+                    <a href="#" class="tag">Performance</a>
+                    <a href="#" class="tag">Booking API</a>
+                    <a href="#" class="tag">Hotel Tech</a>
+                </div>
+            </div>
+
+            <!-- About Author Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">About the Author</h3>
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" style="width: 60px; height: 60px; border-radius: 50%; margin-right: 15px;">
+                    <div>
+                        <h4 style="margin: 0; color: var(--primary-color);">Alex Developer</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Senior Web Developer specializing in hotel websites</p>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem;">10+ years experience in building luxury hotel websites and digital solutions for the hospitality industry.</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Luxury Palace Hotel</h3>
+                    <p>Experience unparalleled luxury and comfort in the heart of the city. Our commitment is to provide exceptional service and create memorable experiences.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Luxury Avenue, City Center</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@luxurypalace.com</p>
+                    <p><i class="fas fa-clock" style="margin-right: 10px;"></i> 24/7 Reception</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="Full_Web_Updated.html">Home</a>
+                    <a href="Full_Web_Updated.html#rooms">Rooms & Suites</a>
+                    <a href="blog.html">Web Blog</a>
+                    <a href="Full_Web_Updated.html#videoSection">Video Tour</a>
+                    <a href="#">Amenities</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Luxury Palace Hotel. All rights reserved. | Web Development Blog by Hotel Tech Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('show');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('show');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#' && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert(`Thank you for subscribing to our Web Development newsletter with ${email}! You'll receive the latest tech insights soon.`);
+                this.reset();
+            }
+        });
+
+        // Search form submission
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchTerm = this.querySelector('input[type="text"]').value;
+            if (searchTerm) {
+                alert(`Searching for: "${searchTerm}" in web development articles...`);
+                this.reset();
+            }
+        });
+
+        // Highlight code blocks on click
+        document.querySelectorAll('.code-block').forEach(block => {
+            block.addEventListener('click', function() {
+                const range = document.createRange();
+                range.selectNodeContents(this);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                
+                try {
+                    document.execCommand('copy');
+                    const originalText = this.textContent;
+                    this.textContent = 'Code copied to clipboard!';
+                    this.style.backgroundColor = '#2a9d8f';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '#282c34';
+                    }, 1500);
+                } catch(err) {
+                    console.log('Copy failed:', err);
+                }
+                
+                selection.removeAllRanges();
+            });
+        });
+
+        // Add reading time to articles
+        function calculateReadingTime() {
+            const articles = document.querySelectorAll('.blog-post-card');
+            articles.forEach(article => {
+                const content = article.querySelector('p').textContent;
+                const words = content.split(/\s+/).length;
+                const readingTime = Math.ceil(words / 200); // 200 words per minute
+                
+                const metaContainer = article.querySelector('.post-meta');
+                if (metaContainer && !article.querySelector('.reading-time')) {
+                    const timeSpan = document.createElement('span');
+                    timeSpan.className = 'reading-time';
+                    timeSpan.innerHTML = `<i class="far fa-clock"></i> ${readingTime} min read`;
+                    metaContainer.appendChild(timeSpan);
+                }
+            });
+        }
+
+        // Initialize reading time calculation
+        document.addEventListener('DOMContentLoaded', calculateReadingTime);
+    </script>
+</body>
+</html>
